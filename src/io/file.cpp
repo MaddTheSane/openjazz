@@ -38,7 +38,7 @@
 
 #ifndef WIN32
     #define UPPERCASE_FILENAMES
-    #defined LOWERCASE_FILENAMES
+    #define LOWERCASE_FILENAMES
 #endif
 
 
