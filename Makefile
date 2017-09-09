@@ -11,14 +11,21 @@ CXXFLAGS+=`sdl-config --cflags`
 LDFLAGS+=`sdl-config --libs`
 
 # Enable modplug music
-CXXFLAGS += -DUSE_MODPLUG `pkg-config --cflags libmodplug`
-LDFLAGS += `pkg-config --libs libmodplug`
+#CXXFLAGS += -DUSE_MODPLUG `pkg-config --cflags libmodplug`
+#LDFLAGS += `pkg-config --libs libmodplug`
+
+# Enable XMP music
+CXXFLAGS += -DUSE_XMP `pkg-config --cflags libxmp`
+LDFLAGS += `pkg-config --libs libxmp`
+
+# Add for network support on windows
+LDFLAGS += -lws2_32
 
 OpenJazz: $(OBJS)
-	cc $(CXXFLAGS) -o OpenJazz $(LDFLAGS) -lstdc++ -lz $(OBJS)
+	g++ $(CXXFLAGS) -o OpenJazz $(OBJS) $(LDFLAGS) -lz
 
 %.o: %.cpp
-	cc $(CXXFLAGS) -Isrc -c $< -o $@
+	g++ $(CXXFLAGS) -Isrc -c $< -o $@
 
 clean:
 	rm -f OpenJazz $(OBJS)

@@ -59,14 +59,19 @@ You will need the SDL 1.2.x library (https://libsdl.org/).
 
 For network play, you need a platform which provides sockets or use the SDL_net
 library (https://www.libsdl.org/projects/SDL_net/), then either define
-`USE_SOCKETS` or `USE_SDL_NET` in the Makefile.
+`USE_SOCKETS` or `USE_SDL_NET` in the Makefile. If using sockets on Windows,
+be sure to uncomment the line that adds "-lws2_32" in the makefile.
 
 For music support, you need to define `USE_MODPLUG` in the Makefile and the
 Modplug library (http://modplug-xmms.sourceforge.net/). The Modplug library
 needs to be patched to support looping tracks, otherwise half of the level will
 be silent.
 
-Further instructions are available at: http://www.alister.eu/jazz/oj/build.php
+Alternately to Modplug, you may use libxmp (https://sourceforge.net/projects/xmp/)
+for music support by defining `USE_XMP` in the Makefile. This does not need 
+patching for looping tracks.
+
+Further (outdated) instructions are available at: http://www.alister.eu/jazz/oj/build.php
 
 ### other options
 
