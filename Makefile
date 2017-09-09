@@ -11,8 +11,12 @@ CXXFLAGS+=`sdl-config --cflags`
 LDFLAGS+=`sdl-config --libs`
 
 # Enable modplug music
-CXXFLAGS += -DUSE_MODPLUG `pkg-config --cflags libmodplug`
-LDFLAGS += `pkg-config --libs libmodplug`
+#CXXFLAGS += -DUSE_MODPLUG `pkg-config --cflags libmodplug`
+#LDFLAGS += `pkg-config --libs libmodplug`
+
+# Enable XMP music
+CXXFLAGS += -DUSE_XMP `pkg-config --cflags libxmp`
+LDFLAGS += `pkg-config --libs libxmp`
 
 # Add for network support on windows
 LDFLAGS += -lws2_32
