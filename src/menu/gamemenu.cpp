@@ -53,7 +53,7 @@ GameMenu::GameMenu (File *file) {
 	// Load the difficulty graphics
 	file->loadPalette(menuPalette);
 	difficultyScreen = file->loadSurface(SW, SH);
-	SDL_SetColorKey(difficultyScreen, SDL_SRCCOLORKEY, 0);
+	SDL_SetColorKey(difficultyScreen, SDL_TRUE, 0);
 
 	// Default difficulty setting
 	difficulty = 1;
@@ -480,7 +480,7 @@ int GameMenu::newGameEpisode (GameModeType mode) {
 		delete[] check;
 
 		if (exists[count]) video.restoreSurfacePalette(episodeScreens[count]);
-		else SDL_SetPalette(episodeScreens[count], SDL_LOGPAL, greyPalette, 0, 256);
+		else SDL_SetPaletteColors(episodeScreens[count]->format->palette, greyPalette, 0, 256);
 
 	}
 

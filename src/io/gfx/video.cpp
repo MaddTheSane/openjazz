@@ -39,6 +39,7 @@
 
 #include <string.h>
 
+//TODO: Migrate to SDL_Window
 
 /**
  * Creates a surface.
@@ -257,7 +258,7 @@ void Video::setPalette (SDL_Color *palette) {
 	clearScreen(SDL_MapRGB(screen->format, 0, 0, 0));
 	flip(0, NULL);
 
-	SDL_SetPalette(screen, SDL_PHYSPAL, palette, 0, 256);
+	SDL_SetPaletteColors(screen->format->palette, palette, 0, 256);
 	currentPalette = palette;
 
 	return;
@@ -286,7 +287,7 @@ SDL_Color* Video::getPalette () {
  */
 void Video::changePalette (SDL_Color *palette, unsigned char first, unsigned int amount) {
 
-	SDL_SetPalette(screen, SDL_PHYSPAL, palette, first, amount);
+	SDL_SetPaletteColors(screen->format->palette, palette, first, amount);
 
 	return;
 
@@ -300,7 +301,7 @@ void Video::changePalette (SDL_Color *palette, unsigned char first, unsigned int
  */
 void Video::restoreSurfacePalette (SDL_Surface* surface) {
 
-	SDL_SetPalette(surface, SDL_LOGPAL, logicalPalette, 0, 256);
+	SDL_SetPaletteColors(surface->format->palette, logicalPalette, 0, 256);
 
 	return;
 
@@ -407,8 +408,7 @@ bool Video::isFullscreen () {
  */
 void Video::expose () {
 
-	SDL_SetPalette(screen, SDL_LOGPAL, logicalPalette, 0, 256);
-	SDL_SetPalette(screen, SDL_PHYSPAL, currentPalette, 0, 256);
+	SDL_SetPaletteColors(screen->format->palette, logicalPalette, 0, 256);
 
 	return;
 
@@ -505,7 +505,7 @@ void Video::flip (int mspf, PaletteEffect* paletteEffects) {
 
 			paletteEffects->apply(shownPalette, false, mspf);
 
-			SDL_SetPalette(screen, SDL_PHYSPAL, shownPalette, 0, 256);
+			SDL_SetPaletteColors(screen->format->palette, shownPalette, 0, 256);
 
 		} else {
 

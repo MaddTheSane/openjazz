@@ -32,7 +32,7 @@
 
 #include "util.h"
 
-#include <SDL/SDL_audio.h>
+#include <SDL_audio.h>
 
 #if defined(USE_MODPLUG)
     #ifdef _WIN32
