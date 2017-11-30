@@ -13,8 +13,8 @@ CXXFLAGS += -DUSE_SOCKETS
 #LIBS += -lws2_32
 
 # SDL
-CXXFLAGS += $(shell sdl-config --cflags)
-LIBS += $(shell sdl-config --libs)
+CXXFLAGS += $(shell sdl2-config --cflags)
+LIBS += $(shell sdl2-config --libs)
 
 # modplug
 MODPLUG_CFLAGS ?= $(shell pkg-config --silence-errors --cflags libmodplug)

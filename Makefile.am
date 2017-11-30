@@ -1,7 +1,7 @@
 # -*- Makefile -*-
 
 AM_CPPFLAGS = -DUSE_SOCKETS -DSCALE -I${top_srcdir}/src \
-              ${libSDL_CFLAGS} ${libmodplug_CFLAGS} ${libxmp_CFLAGS} ${zlib_CFLAGS}
+              ${libSDL2_CFLAGS} ${libmodplug_CFLAGS} ${libxmp_CFLAGS} ${zlib_CFLAGS}
 AM_CFLAGS   = -Wall
 AM_CXXFLAGS = -Wall
 
@@ -106,4 +106,4 @@ openjazz_SOURCES = \
 	src/util.cpp \
 	src/util.h
 
-openjazz_LDADD = ${libSDL_LIBS} ${libmodplug_LIBS} ${libxmp_LIBS} ${zlib_LIBS}
+openjazz_LDADD = ${libSDL2_LIBS} ${libmodplug_LIBS} ${libxmp_LIBS} ${zlib_LIBS}
